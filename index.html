@@ -1,149 +1,126 @@
-<!DOCTYPE html>
-<html lang="zh-TW">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>飛航刷題App</title>
-<link rel="manifest" href="manifest.json">
-
-<style>
-body { font-family: Arial; background:#f5f5f5; padding:20px; }
-.card { background:white; padding:20px; border-radius:12px; }
-.option { margin:8px 0; padding:12px; background:#eee; border-radius:8px; cursor:pointer; }
-.correct { background:#a5d6a7; }
-.wrong { background:#ef9a9a; }
-button { margin:5px; padding:10px; border:none; border-radius:8px; background:#1976d2; color:white;}
-</style>
-</head>
-
-<body>
-
-<h2>✈️ 飛航刷題App</h2>
-
-<div class="card">
-<div id="mode"></div>
-<div id="progress"></div>
-<div id="quiz"></div>
-<div id="explain"></div>
-
-<button onclick="prev()">上一題</button>
-<button onclick="next()">下一題</button>
-<button onclick="restart()">重新開始</button>
-<button onclick="shuffleQuestions()">隨機出題</button>
-<button onclick="examMode()">考試模式</button>
-</div>
-
-<p id="result"></p>
-
-<script>
 let originalQuestions = [
-{q:"AFFIRM代表",options:["領域","肯定","同意"],answer:1,explain:"AFFIRM=肯定"},
-{q:"APPROVED代表",options:["領域","肯定","同意"],answer:2,explain:"APPROVED=同意"},
-{q:"BREAK BREAK代表",options:["訊息分隔","忙碌分隔"],answer:1,explain:"用於不同航空器訊息分隔"},
-{q:"能見度低於多少開燈",options:["3000","5000","1500","1600"],answer:2,explain:"1500公尺"},
-{q:"跑道選擇考量",options:["航線","長度","全部"],answer:2,explain:"全部"},
-{q:"滑出前應告知",options:["跑道","能見度","煞車","全部"],answer:3,explain:"全部"},
-{q:"雷達顯示器看到航空器",options:["不符合","符合","參考"],answer:1,explain:"符合"},
-{q:"模擬熄火需",options:["作指同意","高勤官","協議書"],answer:2,explain:"需協議書"},
-{q:"低空通過點",options:["低鍵點","四邊","五邊"],answer:0,explain:"低鍵點"},
-{q:"直接進場距離",options:["5浬","4浬","3浬"],answer:2,explain:"3浬"},
-{q:"IFR再VFR",options:["IFR離場","VFR","無"],answer:0,explain:"算IFR"},
-{q:"VFR再IFR",options:["VFR","IFR","皆可"],answer:0,explain:"算VFR"},
-{q:"離場許可包含",options:["航線","時間","操作","全部"],answer:3,explain:"全部"},
-{q:"軍機特許航線",options:["戰管","相關單位","航管"],answer:1,explain:"相關單位"},
-{q:"低空滑行高度",options:["50","80","90","100"],answer:3,explain:"100呎"}
+{
+q:`1.低空滑行准許駕駛員在空中低速滑行或以超過滯空滑行之速度滑行。除非駕駛員要去或管制員另有指示，駕駛員必須維持高於地面。`,
+options:["50","80","90","100"],
+answer:3,
+explain:"答案D"
+},
+{
+q:`2. 依國際民航組織詞彙，AFFIRM代表`,
+options:["領域","肯定","同意","安檢"],
+answer:1,
+explain:"答案B"
+},
+{
+q:`3. 依國際民航組織詞彙，APPROVED代表`,
+options:["領域","肯定","同意","航線設計"],
+answer:2,
+explain:"答案C"
+},
+{
+q:`4.依國際民航組織詞彙，BREAK BREAK代表`,
+options:[
+"指部分訊息間之分隔（使用於訊息前後部分分隔不明確時。）",
+"指非常繁忙時刻，傳遞訊息時又將對不同航空器傳遞訊息之分隔"
+],
+answer:1,
+explain:"答案B"
+},
+{
+q:`5.日出至日落之間，當能見度低於(A)3000公尺(B)5000公尺(C)1500公尺(D)1600公尺時，應開啟滑行道燈。`,
+options:["3000公尺","5000公尺","1500公尺","1600公尺"],
+answer:2,
+explain:"答案C"
+},
+{
+q:`6.選擇使用跑道時，機場管制單位除地面風之風速及風場外，尚應考量其他相關因素(A)機場航線(B)跑道長度(C)選項皆是`,
+options:["機場航線","跑道長度","選項皆是"],
+answer:2,
+explain:"答案C"
+},
+{
+q:`7.,於離開航空器滑出前應告知何種資料(A)使用跑道(B)能見度(C)煞車狀況(D)選項皆是`,
+options:["使用跑道","能見度","煞車狀況","選項皆是"],
+answer:3,
+explain:"答案D"
+},
+{
+q:`8.在塔台搜索雷達顯示器上看到航空器(A)不符合(B)符合(C)僅供參考
+看到航空器之條件`,
+options:["不符合","符合","僅供參考"],
+answer:1,
+explain:"答案B"
+},
+{
+q:`9.,准許軍用航空器實施模擬熄火進場/戒備航線進場練習前，應(A)基地作指中心同意(B)基地高勤官同意(C)訂定有效之工作協議書。`,
+options:["基地作指中心同意","基地高勤官同意","訂定有效之工作協議書"],
+answer:2,
+explain:"答案C"
+},
+{
+q:`10.模擬熄火航線在(A)低鍵點(B)四邊(C)五邊 需頒發低空通過許可或備份指示。`,
+options:["低鍵點","四邊","五邊"],
+answer:0,
+explain:"答案A"
+},
+{
+q:`11.模擬熄火航線直接進場通常在(A)五邊五浬(B)五邊四浬(C)五邊三浬外頒發低空通過許可或備份指示。`,
+options:["五邊五浬","五邊四浬","五邊三浬"],
+answer:2,
+explain:"答案C"
+},
+{
+q:`12.對申請先作儀器飛航，再作目視飛航之航空器，許可至(A)儀器飛航離場(B)目視飛航離場(C)以上皆非`,
+options:["儀器飛航離場","目視飛航離場","以上皆非"],
+answer:0,
+explain:"答案A"
+},
+{
+q:`13.對申請先作目視飛航，再作儀器飛航之航空器，視為(A)目視飛航離場(B)儀器飛航離場(C)以上皆可`,
+options:["目視飛航離場","儀器飛航離場","以上皆可"],
+answer:0,
+explain:"答案A"
+},
+{
+q:`14.儀器飛航離場許可包括哪些項目(A)飛航航線(B)許可失效時間(C)離場或到場操作(D)以上皆是`,
+options:["飛航航線","許可失效時間","離場或到場操作","以上皆是"],
+answer:3,
+explain:"答案D"
+},
+{
+q:`15.軍用航空器於特許航線飛航，事先獲得(A)戰管單位(B)相關管制單位(C)航管單位 同意。`,
+options:["戰管單位","相關管制單位","航管單位"],
+answer:1,
+explain:"答案B"
+},
+{
+q:`16.誤失進場時，航空器尚未到達(A)誤失進場空層(B)最低儀航高度(C)最低雷達引導高度前(D)以上皆是，不要要求其更換頻率/雷達電碼。`,
+options:["誤失進場空層","最低儀航高度","最低雷達引導高度","以上皆是"],
+answer:3,
+explain:"答案D"
+},
+{
+q:`17.許可儀器進場後，如駕駛員目視地面時，(A)遵照程序完成進場(B立即改為目視)(C)取消儀器飛航計畫。`,
+options:["遵照程序完成進場","立即改為目視","取消儀器飛航計畫"],
+answer:0,
+explain:"答案A"
+},
+{
+q:`18.在有(A)近場管制服務(B)管制塔台服務(C)以上皆是 的機場才給予繞場進場的指示。`,
+options:["近場管制服務","管制塔台服務","以上皆是"],
+answer:1,
+explain:"答案B"
+},
+{
+q:`19.儀器飛航之航空器練習儀器進場應採用標準隔離直到(A)航空器落地且飛行終止(B)管制員視情況(C)機場天氣情況不允許`,
+options:["航空器落地且飛行終止","管制員視情況","機場天氣情況不允許"],
+answer:0,
+explain:"答案A"
+},
+{
+q:`20.將許可作連續起降、低空通過之航空器在(A)最後進場點(B)管制交接點(C)通過跑到頭 之前視為到場航空器。`,
+options:["最後進場點","管制交接點","通過跑到頭之前"],
+answer:2,
+explain:"答案C"
+}
 ];
-
-let questions = [...originalQuestions];
-let current=0;
-let userAnswers=[];
-let wrong=[];
-let isExam=false;
-
-function load(){
- let q=questions[current];
- document.getElementById("progress").innerText=`第 ${current+1}/${questions.length} 題`;
- document.getElementById("mode").innerText = isExam ? "📘 考試模式" : "📗 練習模式";
-
- let html=`<h3>${q.q}</h3>`;
- q.options.forEach((opt,i)=>{
-  html+=`<div class="option" onclick="select(${i})" id="o${i}">${opt}</div>`;
- });
- document.getElementById("quiz").innerHTML=html;
- document.getElementById("explain").innerHTML="";
-
- if(userAnswers[current]!=null && !isExam){
-   show(userAnswers[current]);
- }
-}
-
-function select(i){
- userAnswers[current]=i;
- let q=questions[current];
-
- if(!isExam){
-   if(i!==q.answer){
-     if(!wrong.includes(current)) wrong.push(current);
-   }else{
-     wrong = wrong.filter(x=>x!==current);
-   }
-   show(i);
- }
-
- setTimeout(()=>{
-   if(current < questions.length-1){
-     current++;
-     load();
-   }else{
-     result();
-   }
- },500);
-}
-
-function show(i){
- let q=questions[current];
- for(let j=0;j<q.options.length;j++){
-  let el=document.getElementById("o"+j);
-  if(j===q.answer) el.classList.add("correct");
-  if(j===i && j!==q.answer) el.classList.add("wrong");
- }
- document.getElementById("explain").innerHTML=
- `答案：${q.options[q.answer]}<br>解析：${q.explain}`;
-}
-
-function next(){ if(current<questions.length-1){current++;load();} else result();}
-function prev(){ if(current>0){current--;load();}}
-
-function result(){
- let s=0;
- questions.forEach((q,i)=>{if(userAnswers[i]===q.answer)s++;});
- document.getElementById("result").innerText=`分數：${s}/${questions.length}`;
-}
-
-function restart(){
- current=0;
- userAnswers=[];
- wrong=[];
- isExam=false;
- questions=[...originalQuestions];
- load();
- document.getElementById("result").innerText="";
-}
-
-function shuffleQuestions(){
- questions = [...questions].sort(()=>Math.random()-0.5);
- current=0;
- load();
-}
-
-function examMode(){
- restart();
- isExam=true;
- load();
-}
-
-load();
-</script>
-
-</body>
-</html>
