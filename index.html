@@ -4,17 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>飛航管理刷題</title>
-
 <style>
-body { font-family: Arial; padding: 20px; }
-.question { font-size: 20px; margin-bottom: 10px; white-space: pre-line; }
-.option { display: block; margin: 5px 0; padding: 10px; background: #eee; border-radius: 8px; cursor:pointer; }
-.correct { background: #a5d6a7; }
-.wrong { background: #ef9a9a; }
-button { margin-top: 10px; padding: 10px; margin-right: 5px; }
+    body { font-family: Arial; padding: 20px; }
+    .question { font-size: 20px; margin-bottom: 10px; white-space: pre-line; }
+    .option { display: block; margin: 5px 0; padding: 10px; background: #eee; border-radius: 8px; }
+    .correct { background: #a5d6a7; }
+    .wrong { background: #ef9a9a; }
+    button { margin-top: 10px; padding: 10px; margin-right: 5px; }
 </style>
 </head>
-
 <body>
 
 <h2>✈️ 飛航管理程序刷題</h2>
@@ -27,109 +25,109 @@ button { margin-top: 10px; padding: 10px; margin-right: 5px; }
 
 <script>
 let questions = [
-{
-q: `1.低空滑行准許駕駛員在空中低速滑行或以超過滯空滑行之速度滑行。`,
-options: ["A. 50","B. 80","C. 90","D. 100"],
-answer: 3
-},
-{
-q:`2. 依國際民航組織詞彙，AFFIRM代表`,
-options:["A. 領域","B. 肯定","C. 同意","D. 安檢"],
-answer:1
-},
-{
-q:`3. 依國際民航組織詞彙，APPROVED代表`,
-options:["A. 領域","B. 肯定","C. 同意","D. 航線設計"],
-answer:2
-},
-{
-q:`4. 依國際民航組織詞彙，BREAK BREAK代表`,
-options:[
-"A. 指部分訊息間之分隔",
-"B. 指非常繁忙時刻之訊息分隔"
-],
-answer:1
-},
-{
-q:`5. 日出至日落之間，當能見度低於多少時應開啟滑行道燈`,
-options:["A. 3000公尺","B. 5000公尺","C. 1500公尺","D. 1600公尺"],
-answer:2
-},
-{
-q:`6. 選擇使用跑道時應考量`,
-options:["A. 機場航線","B. 跑道長度","C. 選項皆是"],
-answer:2
-},
-{
-q:`7. 離開航空器滑出前應告知`,
-options:["A. 跑道","B. 能見度","C. 煞車狀況","D. 全部"],
-answer:3
-},
-{
-q:`8. 塔台雷達顯示器看到航空器代表`,
-options:["A. 不符合","B. 符合","C. 僅供參考"],
-answer:1
-},
-{
-q:`9. 模擬熄火進場前應`,
-options:["A. 戰管同意","B. 高勤官同意","C. 工作協議書"],
-answer:1
-},
-{
-q:`10. 模擬熄火航線在何處需頒發低空通過許可`,
-options:["A. 低鍵點","B. 四邊","C. 五邊"],
-answer:0
-},
-{
-q:`11. 直接進場通常在幾浬外頒發許可`,
-options:["A. 5邊5浬","B. 5邊4浬","C. 5邊3浬"],
-answer:2
-},
-{
-q:`12. 儀器轉目視飛航視為`,
-options:["A. 儀器離場","B. 目視離場","C. 皆非"],
-answer:0
-},
-{
-q:`13. 目視轉儀器飛航視為`,
-options:["A. 目視離場","B. 儀器離場","C. 皆可"],
-answer:0
-},
-{
-q:`14. 儀器離場許可包括`,
-options:["A. 航線","B. 失效時間","C. 操作","D. 以上皆是"],
-answer:3
-},
-{
-q:`15. 特許航線飛航需先獲得`,
-options:["A. 戰管","B. 管制單位","C. 航管"],
-answer:1
-},
-{
-q:`16. 誤失進場時尚未達`,
-options:["A. 空層","B. 最低高度","C. 雷達高度","D. 皆是"],
-answer:3
-},
-{
-q:`17. 目視地面後應`,
-options:["A. 繼續程序","B. 改目視","C. 取消儀器"],
-answer:0
-},
-{
-q:`18. 繞場進場需有`,
-options:["A. 近場","B. 塔台","C. 皆是"],
-answer:1
-},
-{
-q:`19. 儀器進場練習需採標準隔離直到`,
-options:["A. 落地","B. 管制決定","C. 天氣不佳"],
-answer:0
-},
-{
-q:`20. 連續起降在何時視為到場`,
-options:["A. 最後進場點","B. 交接點","C. 通過跑道頭"],
-answer:2
-}
+    {
+        q: "1.低空滑行准許駕駛員在空中低速滑行或以超過滯空滑行之速度滑行。除非駕駛員要去或管制員另有指示，駕駛員必須維持高於地面。",
+        options: ["A. 50", "B. 80", "C. 90", "D. 100"],
+        answer: 3
+    },
+    {
+        q: "2. 依國際民航組織詞彙，AFFIRM代表",
+        options: ["A. 領域", "B. 肯定", "C. 同意", "D. 安檢"],
+        answer: 1
+    },
+    {
+        q: "3. 依國際民航組織詞彙，APPROVED代表",
+        options: ["A. 領域", "B. 肯定", "C. 同意", "D. 航線設計"],
+        answer: 2
+    },
+    {
+        q: "4.依國際民航組織詞彙，BREAK BREAK代表",
+        options: [
+            "A. 指部分訊息間之分隔（使用於訊息前後部分分隔不明確時。）",
+            "B. 指非常繁忙時刻，傳遞訊息時又將對不同航空器傳遞訊息之分隔"
+        ],
+        answer: 1
+    },
+    {
+        q: "5.日出至日落之間，當能見度低於(A)3000公尺(B)5000公尺(C)1500公尺(D)1600公尺時，應開啟滑行道燈。",
+        options: ["A. 3000公尺", "B. 5000公尺", "C. 1500公尺", "D. 1600公尺"],
+        answer: 2
+    },
+    {
+        q: "6.選擇使用跑道時，機場管制單位除地面風之風速及風場外，尚應考量其他相關因素(A)機場航線(B)跑道長度(C)選項皆是",
+        options: ["A. 機場航線", "B. 跑道長度", "C. 選項皆是"],
+        answer: 2
+    },
+    {
+        q: "7.,於離開航空器滑出前應告知何種資料(A)使用跑道(B)能見度(C)煞車狀況(D)選項皆是",
+        options: ["A. 使用跑道", "B. 能見度", "C. 煞車狀況", "D. 選項皆是"],
+        answer: 3
+    },
+    {
+        q: "8.在塔台搜索雷達顯示器上看到航空器(A)不符合(B)符合(C)僅供參考\n看到航空器之條件",
+        options: ["A. 不符合", "B. 符合", "C. 僅供參考"],
+        answer: 1
+    },
+    {
+        q: "9.,准許軍用航空器實施模擬熄火進場/戒備航線進場練習前，應(A)基地作指中心同意(B)基地高勤官同意(C)訂定有效之工作協議書。",
+        options: ["A. 基地作指中心同意", "B. 基地高勤官同意", "C. 訂定有效之工作協議書"],
+        answer: 2
+    },
+    {
+        q: "10.模擬熄火航線在(A)低鍵點(B)四邊(C)五邊 需頒發低空通過許可或備份指示。",
+        options: ["A. 低鍵點", "B. 四邊", "C. 五邊"],
+        answer: 0
+    },
+    {
+        q: "11.模擬熄火航線直接進場通常在(A)五邊五浬(B)五邊四浬(C)五邊三浬外頒發低空通過許可或備份指示。",
+        options: ["A. 五邊五浬", "B. 五邊四浬", "C. 五邊三浬"],
+        answer: 2
+    },
+    {
+        q: "12.對申請先作儀器飛航，再作目視飛航之航空器，許可至(A)儀器飛航離場(B)目視飛航離場(C)以上皆非",
+        options: ["A. 儀器飛航離場", "B. 目視飛航離場", "C. 以上皆非"],
+        answer: 0
+    },
+    {
+        q: "13.對申請先作目視飛航，再作儀器飛航之航空器，視為(A)目視飛航離場(B)儀器飛航離場(C)以上皆可",
+        options: ["A. 目視飛航離場", "B. 儀器飛航離場", "C. 以上皆可"],
+        answer: 0
+    },
+    {
+        q: "14.儀器飛航離場許可包括哪些項目(A)飛航航線(B)許可失效時間(C)離場或到場操作(D)以上皆是",
+        options: ["A. 飛航航線", "B. 許可失效時間", "C. 離場或到場操作", "D. 以上皆是"],
+        answer: 3
+    },
+    {
+        q: "15.軍用航空器於特許航線飛航，事先獲得(A)戰管單位(B)相關管制單位(C)航管單位 同意。",
+        options: ["A. 戰管單位", "B. 相關管制單位", "C. 航管單位"],
+        answer: 1
+    },
+    {
+        q: "16.誤失進場時，航空器尚未到達(A)誤失進場空層-(B)最低儀航高度(C)最低雷達引導高度前(D)以上皆是，不要要求其更換頻率/雷達電碼。",
+        options: ["A. 誤失進場空層", "B. 最低儀航高度", "C. 最低雷達引導高度前", "D. 以上皆是"],
+        answer: 3
+    },
+    {
+        q: "17.許可儀器進場後，如駕駛員目視地面時，(A)遵照程序完成進場(B立即改為目視)(C)取消儀器飛航計畫。",
+        options: ["A. 遵照程序完成進場", "B. 立即改為目視", "C. 取消儀器飛航計畫"],
+        answer: 0
+    },
+    {
+        q: "18.在有(A)近場管制服務(B)管制塔台服務(C)以上皆是 的機場才給予繞場進場的指示。",
+        options: ["A. 近場管制服務", "B. 管制塔台服務", "C. 以上皆是"],
+        answer: 1
+    },
+    {
+        q: "19.儀器飛航之航空器練習儀器進場應採用標準隔離直到(A)航空器落地且飛行終止(B)管制員視情況(C)機場天氣情況不允許",
+        options: ["A. 航空器落地且飛行終止", "B. 管制員視情況", "C. 機場天氣情況不允許"],
+        answer: 0
+    },
+    {
+        q: "20.將許可作連續起降、低空通過之航空器在(A)最後進場點(B)管制交接點(C)通過跑到頭之前視為到場航空器。",
+        options: ["A. 最後進場點", "B. 管制交接點", "C. 通過跑到頭之前"],
+        answer: 2
+    }
 ];
 
 let current = 0;
@@ -161,8 +159,6 @@ function showAnswer(index) {
     let options = document.getElementsByClassName("option");
 
     for (let i = 0; i < options.length; i++) {
-        options[i].classList.remove("correct", "wrong");
-
         if (i === q.answer) options[i].classList.add("correct");
         if (i === index && i !== q.answer) options[i].classList.add("wrong");
     }
